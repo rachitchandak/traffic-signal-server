@@ -14,7 +14,7 @@ def signal_duration():
 def update_duration():
     global DURATION
     new_data = request.json
-    if abs(new_data["green_time"] - DURATION) > 5:
+    if abs(int(new_data["green_time"]) - int(DURATION["green_time"])) > 5:
         DURATION = new_data
         print("Duration Updated")
         return jsonify({"status": "success"}), 200
