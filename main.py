@@ -14,13 +14,7 @@ def signal_duration():
 def update_duration():
     global DURATION
     new_data = request.json
-    if abs(int(new_data["green_time"]) - int(DURATION["green_time"])) > 5:
-        DURATION = new_data
-        print("Duration Updated")
-        return jsonify({"status": "success"}), 200
-    else:
-        print("Duration Not Updated")
-        return jsonify({"status": "failed"}), 400
+    DURATION = new_data
 
 @app.route('/latest_data', methods=['GET'])
 def latest_duration():
